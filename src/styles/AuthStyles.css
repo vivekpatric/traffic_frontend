@@ -1,0 +1,317 @@
+:root {
+  --lofi-purple: #2d1b4e;
+  --lofi-pink: #ff79c6;
+  --lofi-blue: #8be9fd;
+  --road-color: #1a1a1a;
+}
+
+.auth-page-container {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* --- Moving Stars Parallax --- */
+.star-layer {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 60%;
+  pointer-events: none;
+  transition: transform 0.2s ease-out;
+}
+
+/* --- The Scene --- */
+.scene {
+  position: relative;
+  width: 100%;
+ 
+  display: flex;
+  margin: 50px;
+  flex-direction: column;
+  align-items: center;
+ 
+  
+}
+
+/* --- The Car Body --- */
+.car-container {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  z-index: 10;
+  animation: engineShake 0.3s infinite alternate;
+ 
+}
+
+
+
+.car-body {
+  position: absolute;
+  bottom: 50px;
+  width: 426px;
+  height: 120px;
+  display: flex;
+
+  background: var(--lofi-purple);
+  border-radius: 120px 120px 20px 20px;
+  border: 3px solid var(--lofi-pink);
+  box-shadow: 0 0 25px rgba(255,121,198,.4);
+  overflow: hidden;
+}
+
+.door-1,
+.door-2{
+  width:50%;
+  height:100%;
+  border-right:2px solid var(--lofi-pink);
+  position:relative;
+}
+
+.door-2{
+  border-right:none;
+}
+.car-cabin {
+  position: absolute;
+  top: -46px;
+  left: 70px;
+  
+  width: 260px;
+  height: 70px;
+  
+  border-radius: 60px 60px 0 0;
+  border: 10px solid var(--lofi-purple);
+  background-color: #000;
+  display:flex;
+  
+  
+}
+
+/* --- Windows --- */
+.car-cabin::before,
+.car-cabin::after{
+  content:"";
+  flex:1;
+  background: rgba(139,233,253,0.25);
+  
+  border:10px solid var(--lofi-blue);
+  box-shadow: inset 0 0 15px rgba(139,233,253,.4);
+}
+
+.car-cabin::before{
+  border-radius:50px 0 0 0;
+}
+
+.car-cabin::after{
+  border-radius:0 50px 0 0;
+}
+
+/* --- Rotating Wheels --- */
+.wheel {
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  height: 80px;
+  background: #000;
+  border: 4px dashed var(--lofi-pink);
+  border-radius: 50%;
+  animation: rotateWheel 0.8s linear infinite;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* INNER RIM */
+.wheel::after{
+  content:"";
+  width:30px;
+  height:30px;
+  background:#222;
+  border-radius:50%;
+  border:3px solid var(--lofi-blue);
+  box-shadow:0 0 10px rgba(139,233,253,.5);
+}
+
+.wheel.front { right: 40px; }
+.wheel.back { left: 60px; }
+
+/* --- The Road --- */
+.road{
+  position:absolute;
+  bottom:-30px;
+  width:200%;
+  height:80px;
+  overflow:hidden;
+
+  /* purple asphalt */
+  background: linear-gradient(
+    to bottom,
+    #2d1b4e,
+    #1f1338
+  );
+
+  /* neon glow */
+  box-shadow:
+    inset 0 8px 15px rgba(0,0,0,.5),
+    0 0 25px rgba(255,121,198,.25);
+
+     transform:
+    perspective(850px)
+    rotateX(26deg)
+    rotateZ(0deg);   
+}
+
+/* subtle road texture */
+.road::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      rgba(255,121,198,0.06),
+      rgba(0,0,0,0.3)
+    );
+}
+
+/* center dashed lane */
+.road::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:0;
+  width:200%;
+  height:6px;
+  transform:translateY(-50%);
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #ff79c6 0px,
+      #ff79c6 45px,
+      transparent 45px,
+      transparent 95px
+    );
+  animation:moveRoad 0.8s linear infinite;
+}
+/* --- Forms Inside the Car --- */
+.form-overlay{
+  position:absolute;
+  top:-20%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:50; /* higher than car */
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+
+
+
+.login-container {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  margin-left: 18px;
+  border-radius: 15px;
+  border: 1px solid var(--lofi-blue);
+  backdrop-filter: blur(5px);
+  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  
+}
+
+input {
+  width: 90%;
+  margin: 10px 0;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid var(--lofi-pink);
+  color: white;
+  outline: none;
+}
+
+button {
+  background: var(--lofi-pink);
+  border: none;
+  border-radius: 2px;
+  padding: 10px 25px;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+button:hover { background: var(--lofi-blue); color: #000; }
+.ground-grid {
+  position: absolute;
+  top: 100%; /* Starts where the road ends */
+  left: 50%;
+  width: 200vw;
+  height: 100px;
+  transform: translateX(-50%) perspective(500px) rotateX(60deg);
+  background-image: 
+    linear-gradient(var(--lofi-purple) 2px, transparent 2px),
+    linear-gradient(90deg, var(--lofi-purple) 2px, transparent 2px);
+  background-size: 60px 60px; /* Size of the grid squares */
+  background-position: center top;
+  
+  /* The "Glow" at the horizon */
+  mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.5) 40%, transparent 100%);
+  
+  /* Add neon color to the lines */
+  border-top: 2px solid var(--lofi-blue);
+  box-shadow: 0px -10px 50px rgba(139, 233, 253, 0.3);
+  
+  /* Move the grid toward the camera */
+  animation: moveGrid 1.5s linear infinite;
+  z-index: 1;
+}
+
+/* Subtle glow lines for the grid */
+.ground-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--lofi-pink) 1px),
+    linear-gradient(90deg, var(--lofi-pink) 1px);
+  background-size: 60px 60px;
+  background-position: center top;
+  opacity: 0.3;
+}
+
+/* --- Animation for the Grid --- */
+@keyframes moveGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 60px; /* Moves exactly one grid square down */
+  }
+}
+
+/* --- Animations --- */
+@keyframes rotateWheel {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes moveRoad{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-130px); }
+}
+
+@keyframes engineShake {
+  from { transform: translateY(0); }
+  to { transform: translateY(2px); }
+}
