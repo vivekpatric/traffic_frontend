@@ -1,7 +1,6 @@
-import { authFetch } from "./authFetch";
 
 export async function loginUser(email,password) {
-    const res = await fetch("http://localhost:8080/auth/login",{
+    const res = await fetch("https://traffic-backend-6.onrender.com/auth/login",{
       method:"POST",
       credentials:"include",
       headers:{

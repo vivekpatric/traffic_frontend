@@ -1,5 +1,5 @@
 
-const BASE = "http://localhost:8080";
+const BASE = "https://traffic-backend-6.onrender.com";
 
 export async function authFetch(path, options = {}) {
   console.log("authfetch path : ",path);

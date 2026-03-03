@@ -7,7 +7,7 @@ export default function Register(){
     const[password,setPassword] = useState("");
     const navigate = useNavigate();
     async function handleRegister() {
-        await fetch("http://localhost:8080/auth/register",{
+        await fetch("https://traffic-backend-6.onrender.com/auth/register",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({email,password})
