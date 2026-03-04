@@ -28,10 +28,14 @@ export default function Login(){
                 <h2>Login</h2>
                 <input
                 placeholder="Enter Your Email"
+                type="email"
+                required
                 onChange={(e)=>setEmail(e.target.value)}
                 />
                 <input
-                placeholder="Enter Your Password"
+                placeholder="Enter Your Password" 
+                type="password"
+                required
                 onChange={(e)=>setPassword(e.target.value)}
                 />
 
